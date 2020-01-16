@@ -67,6 +67,11 @@ function tryMIDIConnection(midiAccess){
     }else{
         for (var input of midiAccess.inputs.values()){
             input.onmidimessage = getMIDIMessage;
+            midiAccess.onstatechange = function(){
+                if(midiAccess.inputs.size == 0){
+                    tryMIDIConnection(midiAccess);
+                }
+            };
         }
         alertText.innerHTML = "Conexão com dispositivo MIDI bem sucedida";
         alertTitle.innerHTML = "Conexão MIDI";
