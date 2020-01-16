@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    color: #333;
+    font-family: 'Martel Sans', sans-serif;
+    transition: all 0.5s ease-in-out;
+}
+html, body{
+    width: 100%;
+    background-color:#fed;
+}
+
+.header-logo{
+    width: 100%;
+    text-align: center;
+}
+h1{
+    font-family: 'Spicy Rice', cursive;
+    font-size: 48px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+h1 span{
+    font-family: 'Spicy Rice', cursive;
+    font-size: 48px;
+    color: #f44;
+}
+
+.section-intructions{
+    width: 90%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.card{
+    background-color: #f44;
+    width: 300px;
+    height: 400px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+}
+.card *:not(span){
+    transform:translate(0,500px);
+}
+.card img{
+    width: 20%;
+    margin-top: 20px;
+}
+.card:nth-of-type(2) img{
+    width: 25%;
+}
+.card:nth-of-type(3) p{
+    font-size: 14px;
+}
+.card h3{
+    margin-top: 20px;
+}
+.card span.card-step{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    position: absolute;
+    color: #fff;
+    font-size: 128px;
+}
+.card:hover span.card-step{
+    font-size: 48px;
+    transform: translate(-105px,-155px);
+}
+.card:hover *:not(span){
+    transform:translate(0,0);
+}
