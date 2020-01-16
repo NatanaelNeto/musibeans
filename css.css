@@ -52,6 +52,8 @@ h1 span{
     position: relative;
     overflow: hidden;
     margin: 20px;
+    opacity: 0;
+    transform: translate(0,100px);
 }
 .card *:not(span){
     transform:translate(0,500px);
@@ -85,4 +87,22 @@ h1 span{
 }
 .card:hover *:not(span){
     transform:translate(0,0);
+}
+#alert{
+    position: fixed;
+    width: 400px;
+    height: 120px;
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    bottom:0;
+    border-radius: 20px 20px 0 0;
+    bottom:-120px;
+}
+#alert *{
+    color: #fff;
+    margin: 0;
 }
