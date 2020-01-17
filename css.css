@@ -88,6 +88,16 @@ h1 span{
 .card:hover *:not(span){
     transform:translate(0,0);
 }
+.card button{
+    padding: 2px 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.card button:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+}
 #alert{
     position: fixed;
     width: 400px;
@@ -105,4 +115,12 @@ h1 span{
 #alert *{
     color: #fff;
     margin: 0;
+}
+
+.card-fixed span.card-step{
+    font-size: 48px;
+    transform: translate(-105px,-155px);
+}
+.card-fixed *:not(span){
+    transform:translate(0,0);
 }
