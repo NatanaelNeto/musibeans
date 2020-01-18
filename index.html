@@ -38,7 +38,7 @@
             <span class="card-step">3</span>
             <img src="source/play-icon.png" alt="notes-icon">
             <h3>Vamos jogar!</h3>
-            <p>Cada nota é equivalente a uma cor. Nós iremos gerar uma sequência de 4 notas, e você deverá descobrí-la. Para cara nota certa no momento certo, receberá uma tecla preta. Para cada nota certa, mas no tempo diferente, receberá uma nota branca.</p>
+            <p>Descubra a sequência nesse puzzle musical!</p>
             <button onclick="startGame()">Entendi</button>
         </div>
     </section>
@@ -53,11 +53,20 @@
 
         <div class="game-div-text">
 
-            <h2>Como funciona o jogo</h2>
+            <h2>Como funciona</h2>
+            <p>Uma sequência é gerada aleatoriamente pelo sistema.</p>
+            <p>Você deverá usar as notas do seu teclado para inserir uma combinação. Cada note é equivalente a uma cor. <span>Dó</span>, <span>Ré</span>, <span>Mi</span>, <span>Fá</span>, <span>Sol</span>, <span>Lá</span> e <span>Si</span> são as notas usadas e suas respectivas cores.</p>
+            <p>Após inserir uma sequência, aperte qualquer nota para confirmar.</p>
+            <p>Caso haja uma NOTA CERTA na POSIÇÃO CERTA, você recebe uma tecla preta.</p>
+            <p>Caso haja uma NOTA CERTA na POSIÇÃO ERRADA, você recebe uma tecla branca.</p>
+            <p>Se, após 10 tentativas, você não conseguir descobrir a sequência correta, você perde, e um novo jogo é começado.</p>
+            <button onclick="resetGame()">Reiniciar</button>
         </div>
-        <div id="game-div-area">
+        <div id="gameDivArea">
 
-            
+        </div>
+        <div id="gameDivResp">
+
         </div>
     </div>
     <script src="main.js"></script>
