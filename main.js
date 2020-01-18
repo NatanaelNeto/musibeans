@@ -314,3 +314,11 @@ function resetGame(){
     makeSeq();
 
 }
+
+function clearRow(){
+    if(rowColor > 0){
+        rowColor = 0;
+        insert = new Array();
+        rows[rows.length-1].remove();
+    }
+}
