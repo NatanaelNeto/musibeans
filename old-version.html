@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Martel+Sans|Spicy+Rice&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.css">
+    <title>Musibeans</title>
+</head>
+<body onload="loadBody()">
+    
+    <header>
+
+        <div class="header-logo">
+            <h1><span>Musi</span>beans</h1>
+        </div>
+    </header>
+
+    <section class="section-intructions">
+        
+        <div class="card">
+
+            <span class="card-step">1</span>
+            <img src="source/midi-icon.png" alt="midi-icon">
+            <h3>Conecte seu dispositivo MIDI</h3>
+            <p>Conecte seu dispositivo MIDI via USB para poder jogar.</p>
+        </div>
+        <div class="card">
+
+            <span class="card-step">2</span>
+            <img src="source/notes-icon.png" alt="notes-icon">
+            <h3>Identifique as notas de Dó e Si.</h3>
+            <p>Nós usamos as notas centrais do teclado para controlar o jogo. Apenas as sete notas básicas. Por gentileza, aperte o Dó e o Si central do seu teclado.</p>
+        </div>
+        <div class="card">
+
+            <span class="card-step">3</span>
+            <img src="source/play-icon.png" alt="notes-icon">
+            <h3>Vamos jogar!</h3>
+            <p>Descubra a sequência nesse puzzle musical!</p>
+            <button onclick="startGame()">Entendi</button>
+        </div>
+    </section>
+
+    <div id="alert">
+
+        <h2 id="alertTitle">Texto</h2>
+        <p id="alertText">Informação do ocorrido</p>
+    </div>
+
+    <div id="gameDiv">
+
+        <div class="game-div-text">
+
+            <h2>Como funciona</h2>
+            <p>Uma sequência é gerada aleatoriamente pelo sistema.</p>
+            <p>Você deverá usar as notas do seu teclado para inserir uma combinação. Cada note é equivalente a uma cor. <span>Dó</span>, <span>Ré</span>, <span>Mi</span>, <span>Fá</span>, <span>Sol</span>, <span>Lá</span> e <span>Si</span> são as notas usadas e suas respectivas cores.</p>
+            <p>Após inserir uma sequência, aperte qualquer nota para confirmar.</p>
+            <p>Caso haja uma NOTA CERTA na POSIÇÃO CERTA, você recebe uma tecla preta.</p>
+            <p>Caso haja uma NOTA CERTA na POSIÇÃO ERRADA, você recebe uma tecla branca.</p>
+            <p>Se, após 10 tentativas, você não conseguir descobrir a sequência correta, você perde, e um novo jogo é começado.</p>
+            <button onclick="resetGame()">Reiniciar</button>
+            <button onclick="clearRow()">Limpar linha</button>
+        </div>
+        <div id="gameDivArea">
+
+        </div>
+        <div id="gameDivResp">
+
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

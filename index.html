@@ -1,74 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Martel+Sans|Spicy+Rice&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Musibeans</title>
 </head>
 <body onload="loadBody()">
-    
-    <header>
+    <div class="logo" id="logoDiv">
 
-        <div class="header-logo">
-            <h1><span>Musi</span>beans</h1>
-        </div>
-    </header>
+        <img src="source/logo.png" alt="logo-musibeans">
+    </div>
 
-    <section class="section-intructions">
-        
+    <div class="cards" id="cardsDiv">
+
         <div class="card">
 
-            <span class="card-step">1</span>
-            <img src="source/midi-icon.png" alt="midi-icon">
-            <h3>Conecte seu dispositivo MIDI</h3>
-            <p>Conecte seu dispositivo MIDI via USB para poder jogar.</p>
-        </div>
-        <div class="card">
+            <div class="image"></div>
+            <div class="content-card">
 
-            <span class="card-step">2</span>
-            <img src="source/notes-icon.png" alt="notes-icon">
-            <h3>Identifique as notas de Dó e Si.</h3>
-            <p>Nós usamos as notas centrais do teclado para controlar o jogo. Apenas as sete notas básicas. Por gentileza, aperte o Dó e o Si central do seu teclado.</p>
+                <span class="number-card">1</span>
+                <h3>Conecte um controlador MIDI</h3>
+                <p>Use uma conexão USB para conectar seu controlador MIDI ao computador. Ele deverá identificado assim que for conectado.</p>
+            </div>
+            <div class="bar-card"></div>
         </div>
         <div class="card">
 
-            <span class="card-step">3</span>
-            <img src="source/play-icon.png" alt="notes-icon">
-            <h3>Vamos jogar!</h3>
-            <p>Descubra a sequência nesse puzzle musical!</p>
-            <button onclick="startGame()">Entendi</button>
+            <div class="image"></div>
+            <span class="number-card">2</span>
+            <div class="content-card">
+
+                <span class="number-card">2</span>
+                <h3>Aperte DÓ</h3>
+                <p>O jogo utilizará as sete notas musicais (sem acidentes) da quarta oitava. Localize o Dó central e aperte-o.</p>
+            </div>
+            <div class="bar-card"></div>
         </div>
-    </section>
+        <div class="card">
 
-    <div id="alert">
+            <div class="image"></div>
+            <span class="number-card">3</span>
+            <div class="content-card">
 
-        <h2 id="alertTitle">Texto</h2>
-        <p id="alertText">Informação do ocorrido</p>
+                <span class="number-card">3</span>
+                <h3>Vamos jogar!</h3>
+                <p>Seu controlador foi configurado com sucesso. Aperte o botão abaixo para continuar.</p>
+                <button onclick="startGame()">AVANÇAR</button>
+            </div>
+            <div class="bar-card"></div>
+        </div>
     </div>
 
     <div id="gameDiv">
 
-        <div class="game-div-text">
-
-            <h2>Como funciona</h2>
-            <p>Uma sequência é gerada aleatoriamente pelo sistema.</p>
-            <p>Você deverá usar as notas do seu teclado para inserir uma combinação. Cada note é equivalente a uma cor. <span>Dó</span>, <span>Ré</span>, <span>Mi</span>, <span>Fá</span>, <span>Sol</span>, <span>Lá</span> e <span>Si</span> são as notas usadas e suas respectivas cores.</p>
-            <p>Após inserir uma sequência, aperte qualquer nota para confirmar.</p>
-            <p>Caso haja uma NOTA CERTA na POSIÇÃO CERTA, você recebe uma tecla preta.</p>
-            <p>Caso haja uma NOTA CERTA na POSIÇÃO ERRADA, você recebe uma tecla branca.</p>
-            <p>Se, após 10 tentativas, você não conseguir descobrir a sequência correta, você perde, e um novo jogo é começado.</p>
-            <button onclick="resetGame()">Reiniciar</button>
-            <button onclick="clearRow()">Limpar linha</button>
+        <div id="gameDivResp">
+            
         </div>
         <div id="gameDivArea">
-
+            <div class="back-area">
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+                <div class="row">
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                    <div class="ball ball-clear"></div>
+                </div>
+            </div>
+            
         </div>
-        <div id="gameDivResp">
+        <div class="game-text">
 
+            <h3>Como jogar</h3>
+            <p>Ao começar o jogo, uma sequência de notas é gerada pelo sistema.</p>
+            <p>Você possui 10 tentativas para tentar descobrir qual a sequência correta.</p>
+            <p>Com seu controlador MIDI, toque 4 das 7 notas musicais, sem repetir a mesma nota.</p>
+            <div class="buttons">
+
+                <img src="source/keys.png" alt="teclas">
+                <p>Notas musicais e suas respectivas cores.</p>
+            </div>
+            <p>Após você inserir as notas, aperte qualquer tecla para confirmar OU clique no botão abaixo para limpar a linha.</p>
+            <p>Para cada nota CORRETA na posição ERRADA, você receberá uma tecla branca. Para cada nota CORRETA na posição CORRETA, você receberá uma tecla preta.</p>
+            <div class="buttons">
+
+                <button onclick="resetGame()">Reiniciar</button>
+                <button onclick="clearRow()">Limpar Linha</button>
+            </div>
         </div>
+    </div>
+    <div id="alert">
+
+        <h3 id="alertTitle">Título do alerta</h3>
+        <p id="alertText">Texto do alerta. Pode ser um pouco mais longo para explicar melhor.</p>
+        <div id="barAlert"></div>
     </div>
     <script src="main.js"></script>
 </body>

@@ -1,17 +1,13 @@
-var logoDiv = document.getElementById("logoDiv");
-var cardsDiv = document.getElementById("cardsDiv");
 var cards = document.getElementsByClassName("card");
-var barCards = document.getElementsByClassName("bar-card");
 var alert = document.getElementById("alert");
 var alertTitle = document.getElementById("alertTitle");
 var alertText = document.getElementById("alertText");
-var barAlert = document.getElementById("barAlert");
 var gameDiv = document.getElementById("gameDiv");
 var gameDivArea = document.getElementById("gameDivArea");
 var gameDivResp = document.getElementById("gameDivResp");
 var rows = document.getElementsByClassName("row");
 var rowsResp = document.getElementsByClassName("row-micro");
-var calibrateKeyboard = 1;
+var calibrateKeyboard = 2;
 var gameStart = false;
 var red = "#f44";
 var orange = "#f83";
@@ -49,40 +45,33 @@ function loadBody(){
     if(navigator.requestMIDIAccess){
         alertText.innerHTML = "Seu browser suporta o acesso MIDI.";
         alertTitle.innerHTML = "Suporte ao MIDI";
-        barAlert.style.backgroundColor = "#9e5";
-        alert.style.left = 0;
+        alert.style.bottom = 0;
         setTimeout(function(){
-            alert.style.left = "-500px";
-            logoDiv.style.opacity = 0;
+            alert.style.bottom = "-120px";
             loaded();
         },3000);
         
     }else{
         alertText.innerHTML = "Seu browser não suporta o acesso MIDI.";
         alertTitle.innerHTML = "Falta de suporte";
-        barAlert.style.backgroundColor = "#f44";
-        alert.style.left = 0;
+        alert.style.bottom = 0;
         setTimeout(function(){
-            alert.style.left = "-500px";
+            alert.style.bottom = "-120px";
         },3000);
     }
 }
 function loaded(){
-    setTimeout(function(){
-        logoDiv.style.display = "none";
-        cardsDiv.style.display = "flex";
-        cardsDiv.style.opacity = 1;
-        var i = 0;
-        var showCard = setInterval(function(){
-            cards[i].style.opacity = 1;
-            cards[i].style.transform = "none";
-            i++;
-            if(i == cards.length){
-                clearInterval(showCard);
-            }
-        }, 300);
-        navigator.requestMIDIAccess().then(onMIDISucess,onMIDIFailure);
-    },600);
+    var i = 0;
+    var showCard = setInterval(function(){
+        cards[i].style.opacity = 1;
+        cards[i].style.transform = "none";
+        i++;
+        if(i == cards.length){
+            clearInterval(showCard);
+        }
+    }, 300);
+
+    navigator.requestMIDIAccess().then(onMIDISucess,onMIDIFailure);
 }
 function onMIDISucess(midiAccess){
     var inputs = midiAccess.inputs;
@@ -94,31 +83,29 @@ function onMIDISucess(midiAccess){
     /*while(inputs.size == 0){
         alertText.innerHTML = "Conecte um dispositivo MIDI e atualize a página.";
         alertTitle.innerHTML = "Falha na conexão MIDI";
-        alert.style.left = 0;
+        alert.style.bottom = 0;
         setTimeout(function(){
-            alert.style.left = "-500px";
+            alert.style.bottom = "-120px";
         },3000);
     }*/
 }
 function onMIDIFailure(){
     alertText.innerHTML = "Seu browser não suporta o acesso MIDI.";
     alertTitle.innerHTML = "Falta de suporte";
-    barAlert.style.backgroundColor = "#f44";
-    alert.style.left = 0;
+    alert.style.bottom = 0;
     setTimeout(function(){
-        alert.style.left = "-500px";
+        alert.style.bottom = "-120px";
     },3000);
 }
 
 function tryMIDIConnection(midiAccess){
     if(midiAccess.inputs.size == 0){
-        alertText.innerHTML = "Falha na conexão MIDI. Conecte um dispositivo MIDI no seu computador.";
-        alertTitle.innerHTML = "Conexão MIDI";
-        barAlert.style.backgroundColor = "#f44";
-        alert.style.left = 0;
-        barCards[0].style.backgroundColor = "#f44";
+        alertText.innerHTML = "Conecte um dispositivo MIDI no seu computador.";
+        alertTitle.innerHTML = "Falha na conexão MIDI";
+        alert.style.bottom = 0;
+        cards[0].style.backgroundColor = "#f44";
         setTimeout(function(){
-            alert.style.left = "-500px";
+            alert.style.bottom = "-120px";
             tryMIDIConnection(midiAccess);
         },3000);
     }else{
@@ -139,22 +126,20 @@ function tryMIDIConnection(midiAccess){
         }
         alertText.innerHTML = "Conexão com dispositivo MIDI bem sucedida";
         alertTitle.innerHTML = "Conexão MIDI";
-        barAlert.style.backgroundColor = "#9e5";
-        barCards[0].style.backgroundColor = "#9e5";
+        cards[0].style.backgroundColor = "#9e5";
         cards[0].classList.add("card-fixed");
-        alert.style.left = 0;
+        alert.style.bottom = 0;
         setTimeout(function(){
-            alert.style.left = "-500px";
+            alert.style.bottom = "-120px";
         },2000);
         if(calibrateKeyboard == 2){
-            alertText.innerHTML = "Aperte a nota DÓ central do seu controlador MIDI.";
-            alertTitle.innerHTML = "Detectar nota";
-            barAlert.style.backgroundColor = "#9e5";
-            barCards[0].style.backgroundColor = "#9e5";
+            alertText.innerHTML = "Aperte as notas DÓ e SI centrais do seu teclado.";
+            alertTitle.innerHTML = "Detectar notas";
+            cards[0].style.backgroundColor = "#9e5";
             cards[0].classList.add("card-fixed");
-            alert.style.left = 0;
+            alert.style.bottom = 0;
             setTimeout(function(){
-                alert.style.left = "-500px";
+                alert.style.bottom = "-120px";
             },3000);
         }
     }
@@ -162,16 +147,23 @@ function tryMIDIConnection(midiAccess){
 
 function getMIDIMessage(mm){
     if(mm.data[0] == 144){
-        if(calibrateKeyboard == 1 && mm.data[1] == 60){
-            alertText.innerHTML = "Você está pronto para jogar!";
-            alertTitle.innerHTML = "Nota DÓ encontrada!";
-            barAlert.style.backgroundColor = "#9e5";
-            alert.style.left = 0;
+        if(calibrateKeyboard == 2 && mm.data[1] == 60){
+            alertText.innerHTML = "Aperte agora a Nota de Si";
+            alertTitle.innerHTML = "Nota DÓ";
+            alert.style.bottom = 0;
             setTimeout(function(){
-                alert.style.left = "-500px";
+                alert.style.bottom = "-120px";
             },3000);
             calibrateKeyboard--;
-            barCards[1].style.backgroundColor = "#9e5";
+        }else if(calibrateKeyboard == 1 && mm.data[1] == 71){
+            alertText.innerHTML = "Você está pronto para jogar!";
+            alertTitle.innerHTML = "Nota SI";
+            alert.style.bottom = 0;
+            setTimeout(function(){
+                alert.style.bottom = "-120px";
+            },3000);
+            calibrateKeyboard--;
+            cards[1].style.backgroundColor = "#9e5";
             cards[1].classList.add("card-fixed");
         }
         if(gameStart && (nRows <= 10)){
@@ -243,9 +235,9 @@ function getMIDIMessage(mm){
                 if(blackKey == sizeCode){
                     alertText.innerHTML = "Você descobriu a senha correta!";
                     alertTitle.innerHTML = "Vitória!";
-                    alert.style.left = 0;
+                    alert.style.bottom = 0;
                     setTimeout(function(){
-                        alert.style.left = "-500px";
+                        alert.style.bottom = "-120px";
                         resetGame();
                     },5000);
                 }
@@ -257,10 +249,9 @@ function getMIDIMessage(mm){
                     nRows = 0;
                     alertText.innerHTML = "Você não conseguiu descobrir a senha.";
                     alertTitle.innerHTML = "Derrota";
-                    barAlert.style.backgroundColor = "#f44";
-                    alert.style.left = 0;
+                    alert.style.bottom = 0;
                     setTimeout(function(){
-                        alert.style.left = "-500px";
+                        alert.style.bottom = "-120px";
                         resetGame();
                     },5000);
                 }
@@ -293,19 +284,21 @@ function startGame(){
     if(calibrateKeyboard == 0){
         makeSeq();
         gameStart = true;
-        barCards[2].style.backgroundColor = "#9e5";
+        cards[2].style.backgroundColor = "#9e5";
         cards[2].classList.add("card-fixed");
         setTimeout(function(){
-            cardsDiv.style.display = "none";
+            for(let i = 0; i < cards.length; i++){
+                cards[i].style.display = "none";
+            }
             gameDiv.style.display = "flex";
+            document.getElementsByClassName("header-logo")[0].style.opacity = 0;
         },1000);
     }else{
-        alertText.innerHTML = "Execute o passo 2 para poder continuar";
-        alertTitle.innerHTML = "Passo 2 não concluído.";
-        barAlert.style.backgroundColor = "#f44";
-        alert.style.left = 0;
+        alertText.innerHTML = "Primeiro, faça o passo 2";
+        alertTitle.innerHTML = "Falta de Calibração";
+        alert.style.bottom = 0;
         setTimeout(function(){
-            alert.style.left = "-500px";
+            alert.style.bottom = "-120px";
         },3000);
     }
 }
@@ -314,21 +307,6 @@ function resetGame(){
     while(gameDivArea.firstChild){
         gameDivArea.removeChild(gameDivArea.firstChild);
     }
-    var backArea = document.createElement("div");
-    backArea.classList.add("back-area");
-    for(let i = 0; i < 10; i++){
-        var backRow = document.createElement("div");
-        backRow.classList.add("row");
-        for(let j = 0; j < 4; j++){
-            var clearBall = document.createElement("div");
-            clearBall.classList.add("ball");
-            clearBall.classList.add("ball-clear");
-            backRow.appendChild(clearBall);
-        }
-        backArea.appendChild(backRow);
-    }
-    gameDivArea.appendChild(backArea);
-    
     while(gameDivResp.firstChild){
         gameDivResp.removeChild(gameDivResp.firstChild);
     }
